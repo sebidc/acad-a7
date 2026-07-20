@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACAD - A7</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================
+           GLOBAL GRID LAYOUT (4-5 Columns per Row)
+           ========================================== */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 60px 45px;
+            background: linear-gradient(135deg, #e0f2fe, #fdf2f8);
+            font-family: Arial, sans-serif;
+        }
+
+        .page-box {
+            max-width: 1700px;
+            margin: 0 auto;
+            padding: 60px 45px 70px;
+            background-color: #ffffff;
+            border: 4px solid #1d4ed8;
+            border-radius: 24px;
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+        }
+
+        .page-title {
+            margin: 0 0 55px;
+            color: #1e3a8a;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            letter-spacing: 3px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .main-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 45px;
+            justify-items: center;
+            align-items: start;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Responsive overrides to target 4-5 per row on large viewports */
+        @media (min-width: 1540px) {
+            .main-gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        @media (min-width: 1900px) {
+            .main-gallery-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            .page-box {
+                padding: 30px 10px 40px;
+                border-width: 3px;
+                border-radius: 16px;
+            }
+
+            .page-title {
+                margin-bottom: 30px;
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+
+            .main-gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        /* ==========================================
+           1. Arquel Christian M. Ramos Styles
+           ========================================== */
+        .arquel-img-container {
+            background-color: rgb(141, 185, 252);
+            width: 300px;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 5px;
+        }
+        .arquel-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+        }
+
+        /* ==========================================
+           2. Jim Cedrick C. Hernandez Styles
+           ========================================== */
+        .jim-img-container {
+            background-color: rgb(121, 121, 121);
+            width: 300px; 
+            height: 300px;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            border-radius: 7px;
+        }
+        .jim-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover; 
+        }
+        .jim-dscptn {
+            color: black;
+            font-family: monaco, monospace;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 7px;
+        }
+
+        /* ==========================================
+           3. Antonio Lorenzo E. Itchon Styles
+           ========================================== */
+        .antonio-img-container {
+            width: 300px;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 25px rgba(0,0,0,.4);
+            transition: .4s;
+        }
+        .antonio-img-container:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 35px rgba(0,0,0,.5);
+        }
+        .antonio-img-container img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        .antonio-dscptn {
+            padding: 20px;
+            text-align: center;
+            background: crimson;
+            color: white;
+        }
+        .antonio-dscptn h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .antonio-dscptn p {
+            font-size: 14px;
+            color: #000000;
+        }
+
+        /* ==========================================
+           4. Patrick Jace O. Delos Santos Styles
+           ========================================== */
+        .patrick-img-container {
+            background-color: rgb(219, 79, 173);
+            width: 300px; 
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
+            border-radius: 10px;
+        }
+        .patrick-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover; 
+        } 
+
+        /* ==========================================
+           5. Tito D. Sto. Domingo IV Styles
+           ========================================== */
+        .tito-img-container {
+            background: linear-gradient(135deg, #2f7fbf, #3c0d7a);
+            padding: 15px;
+            border: 1px solid #b7d7f0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(13, 79, 122, 0.18);
+            width: 270px;
+            height: 270px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .tito-img-container img {
+            width: 95%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .tito-dscptn {
+            color: #ffffff;
+            font-family: sans-serif;
+            font-size: 16px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* ==========================================
+           6. Stefano D. Catahan Styles
+           ========================================== */
+        .stefano-img-container {
+            background-color: rgb(206, 206, 206); 
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 7px;
+        } 
+        .stefano-img-container img { 
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+        } 
+        .stefano-dscptn { 
+            color: black; 
+            font-family: sans-serif;
+            margin-top: 5px;
+        } 
+
+        /* ==========================================
+           7. Jerommeke Mckenzie D. Rivera Styles
+           ========================================== */
+        .jerommeke-wrapper {
+            background-color: dodgerblue;
+            border-radius: 8px;
+            padding: 5px;
+        }
+        .jerommeke-img-container {
+            background-color: rgb(141, 185, 252);
+            width: 290px;
+            height: 340px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 5px;
+        }
+        .jerommeke-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+        }
+        .jerommeke-dscptn {
+            color: darkblue;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* ==========================================
+           8. Jhon Royce Verian Styles
+           ========================================== */
+        .royce-img-container {
+            width: 300px;
+            text-align: center;
+        }
+        .royce-img-container img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .royce-dscptn {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .royce-p {
+            font-size: large;
+            margin-bottom: 8px;
+            color: black;
+        } 
+
+        /* ==========================================
+           9. Enrique Jr M. Casillan Styles
+           ========================================== */
+        .enrique-gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 280px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .enrique-gallery img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #984caf;
+        }
+        .enrique-gallery p {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* ==========================================
+           10. Steven Karl A. Panganiban Styles
+           ========================================== */
+        .steven-img-container {
+            background-color: rgb(255, 100, 100);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+        .steven-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+        }
+        .steven-dscptn { 
+            color: white; 
+            font-family: sans-serif;
+            margin-top: 5px;
+            font-weight: bold;
+        } 
+
+        /* ==========================================
+           11. Diane Joy P. Leoncio Styles
+           ========================================== */
+        .diane-img-container {
+            background-color: rgb(255, 100, 100);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+        .diane-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+        }
+        .diane-dscptn { 
+            color: blue; 
+            font-family: sans-serif;
+            margin-top: 5px;
+            font-weight: bold;
+        } 
+
+        /* ==========================================
+           12. Josiah S. Maclang Styles
+           ========================================== */
+        .josiah-image-container {
+            background-color: #abe675;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+        .josiah-image-container img {
+            width: 90%;
+            height: 80%;
+            object-fit: cover;
+            border-radius: 10px;
+            outline: 2px solid #475e31;
+        }
+        .josiah-dscptn {
+            font-size: 18px;
+            color: #475e31;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            margin-top: 10px;
+        }
+
+        /* ==========================================
+           13. John Noah L. Manuel Styles
+           ========================================== */
+        .noah-img-container {
+            background-color: rgb(80, 70, 30);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .noah-img-container img {
+            width: 100%;
+            height: 85%;
+            object-fit: cover;
+            display: block;
+        }
+        .noah-dscptn {
+            color: pink;
+            margin-top: 8px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        /* ==========================================
+           14. Jhillyan Aisley G. Pino Styles
+           ========================================== */
+        .jhillyan-container {
+            width: 300px;
+        }
+        .jhillyan-image-container {
+            background-color: #ffffff;
+            padding: 12px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .jhillyan-image-container img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+        .jhillyan-dscptn {
+            text-align: center;
+            margin-top: 12px;
+            padding: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #e2e8e0; 
+            color: #3d4a3b;
+            border-radius: 8px;
+        }
+
+        /* ==========================================
+           15. Adam Erikson S. Reyes Styles
+           ========================================== */
+        .adam-img-container {
+            background-color: rgb(219, 79, 173);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+        .adam-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+        }
+        .adam-dscptn {
+            color: orange;
+            margin-top: 8px;
+            font-family: 'VCR OSD Mono', monospace;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* ==========================================
+           16. Alexis M. Romero Styles
+           ========================================== */
+        .alexis-gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 280px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .alexis-gallery img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #984caf;
+        }
+        .alexis-gallery p {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* ==========================================
+           17. Sophia Rasmin B. Crisostomo Styles
+           ========================================== */
+        .sophia-img-container {
+            background-color: #FFB6C1;
+            width: 300px;
+            height: 330px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .sophia-img-container img {
+            width: 90%;
+            height: 75%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .sophia-dscptn {
+            font-family: 'Segoe UI', sans-serif;
+            color: black;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* ==========================================
+           18. Catleya Jan M. Mañalac Styles
+           ========================================== */
+        .catleya-img-container {
+            background-color: pink;
+            width: 300px; 
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
+            border-radius: 5px;
+        }
+        .catleya-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover; 
+        }
+
+        /* ==========================================
+           19. Janelle Marie A. Asuncion Styles
+           ========================================== */
+        .janelle-img-container {
+            background-color: rgb(182,104,100);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 7px;
+        }
+        .janelle-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+        }
+        .janelle-dscptn {
+            color: White;
+            font-family: sans-serif;
+            margin-top: 5px;
+        }
+
+        /* ==========================================
+           20. Prince Nino Alexis S. Rubiano Styles
+           ========================================== */
+        .prince-container {
+            width: 300px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background: #fff;
+            text-align: center;
+        }
+        .prince-container img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+        .prince-dscptn {
+            padding: 10px;
+            background: #f4f4f4;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #954527;
+        }
+
+        /* ==========================================
+           21. Jeanette A. Felipe Styles
+           ========================================== */
+        .jeanette-img-container {
+            background-color: rgb(6, 202, 233);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+        .jeanette-img-container img {
+            width: 90%;
+            height: 85%;
+            object-fit: cover;
+        }
+        .jeanette-dscptn {
+            color: rgba(1, 8, 7, 0.897);
+            font-family: sans-serif;
+            margin-top: 5px;
+        }
+
+        /* ==========================================
+           22. Ronnelio Mendoza Jr Styles
+           ========================================== */
+        .ronnelio-container {
+            width: 300px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+            text-align: center;
+        }
+        .ronnelio-container img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+        .ronnelio-dscptn {
+            padding: 10px;
+            background: #f4f4f4;
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: Arial;
+            color: #0066CC;
+        }
+
+        /* ==========================================
+           23. Angela C. Reyes Styles
+           ========================================== */
+        .angela-img-container {
+            background-color: pink;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 7px;
+        }
+        .angela-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+        }
+        .angela-dscptn {
+            color: White;
+            font-family: sans-serif;
+            margin-top: 5px;
+        }
+
+        /* ==========================================
+           24. Janine-Mariel P. Dela Cruz Styles
+           ========================================== */
+        .janine-polaroid-card {
+            background-color: #ffffff;
+            padding: 15px 15px 25px 15px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 260px;
+        }
+        .janine-yellow-frame {
+            background-color: #f1c40f;
+            padding: 12px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .janine-polaroid-card img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+        .janine-student-name {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        /* ==========================================
+           25. Jhen Dave P. Blanco Styles
+           ========================================== */
+        .jhendave-img-container {
+            background-color: rgb(200, 36, 45);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+        .jhendave-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+            object-position: top;
+        }
+        .jhendave-dscptn {
+            margin-top: 5px;
+        }
+
+        /* ==========================================
+           26. Aaron Vladimier C. Villegas Styles
+           ========================================== */
+        .aaron-img-container {
+            width: 300px;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: .2s;
+        }
+        .aaron-img-container:hover {
+            transform: translateY(-10px) scale(1.03);
+        }
+        .aaron-img-container img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .aaron-dscptn {
+            padding: 15px;
+            text-align: center;
+            background: #4292c6;
+            color: #f7fbff;
+        }
+
+        /* ==========================================
+           27. Khenjie Q. Villena Styles
+           ========================================== */
+        .khenjie-img-container {
+            background-color: rgb(224, 242, 254);
+            width: 295px;
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 7px;
+        }
+        .khenjie-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+        }
+        .khenjie-dscptn {
+            color: navy;
+            font-family: sans-serif;
+            margin-top: 5px;
+        }
+
+        /* ==========================================
+           28. Evan Joshua L. Quiambao Styles
+           ========================================== */
+        .evan-img-container {
+            background: rgb(52, 73, 94);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+        .evan-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+            object-position: top;
+        }
+        .evan-dscptn {
+            margin-top: 5px;
+        }
+
+        /* ==========================================
+           29-43. Additional Student Styles
+           ========================================== */
+        .added-student-card {
+            background-color: var(--card-color);
+            color: var(--text-color);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+            box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
+        }
+        .added-student-card img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+            border-radius: 7px;
+        }
+        .added-student-dscptn {
+            margin-top: 8px;
+            font-family: sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .sebi-polaroid-card {
+            background-color: #ffffff;
+            padding: 14px 14px 34px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 12px 24px rgba(15, 23, 42, 0.22);
+            transform: rotate(-2deg);
+        }
+
+        .sebi-polaroid-card img {
+            width: 100%;
+            height: 260px;
+            border-radius: 3px;
+            border: 5px solid #3198AD;
+            object-fit: cover;
+        }
+
+        .sebi-polaroid-card .added-student-dscptn {
+            margin-top: 13px;
+            color: #1f6f82;
+            font-family: 'Caveat', cursive;
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .no-submit-card {
+            width: 300px;
+            height: 360px;
+            padding: 24px;
+            background: linear-gradient(135deg, #dbeafe, #f8fafc);
+            border: 3px dashed #60a5fa;
+            border-radius: 16px;
+            color: #1e3a8a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+        }
+
+        .no-submit-icon {
+            width: 86px;
+            height: 86px;
+            margin-bottom: 18px;
+            border-radius: 50%;
+            background-color: #bfdbfe;
+            color: #2563eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 42px;
+            font-weight: 800;
+        }
+
+        .no-submit-name {
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .no-submit-text {
+            margin-top: 10px;
+            color: #475569;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* ==========================================
+           Uniform Card Sizes
+           ========================================== */
+        .main-gallery-grid > * {
+            width: 300px;
+            height: 360px;
+            max-width: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .main-gallery-grid > *:hover {
+            transform: translateY(-12px) scale(1.04);
+            box-shadow: 0 18px 35px rgba(15, 23, 42, 0.25);
+        }
+
+        .main-gallery-grid > * img {
+            width: 100%;
+            height: 260px;
+            max-width: 100%;
+            object-fit: cover;
+            box-sizing: border-box;
+        }
+
+        .jerommeke-img-container,
+        .jhillyan-image-container {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+
+        /* ==========================================
+           Extra Submitted Student Styles
+           ========================================== */
+        .main-gallery-grid > .jade-img-container {
+            background-color: rgb(255, 240, 100);
+            color: navy;
+            width: 300px;
+            height: 360px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 5px;
+        }
+        .jade-img-container img {
+            width: 95%;
+            height: 80%;
+            object-fit: cover;
+        }
+        .jade-dscptn {
+            color: navy;
+            font-weight: bold;
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .main-gallery-grid > .stephen-card {
+            width: 300px;
+            height: 360px;
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,.2);
+        }
+        .stephen-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        .stephen-dscptn {
+            padding: 15px;
+            text-align: center;
+            color: #333333;
+            font-weight: bold;
+        }
+
+        .main-gallery-grid > .khrystal-card {
+            background-color: rgb(21, 175, 85);
+            width: 300px;
+            height: 360px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+        .khrystal-card img {
+            width: 86%;
+            height: 82%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .khrystal-dscptn {
+            color: rgb(0, 0, 0);
+            font-family: sans-serif;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .main-gallery-grid > .samantha-card {
+            background-color: rgb(79, 173, 219);
+            width: 300px;
+            height: 360px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 15px;
+            box-shadow: 0 5px 10px gray;
+        }
+        .samantha-card img {
+            width: 90%;
+            height: 75%;
+            object-fit: cover;
+        }
+        .samantha-dscptn {
+            color: #ffffff;
+            margin-top: 8px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .main-gallery-grid > .glenard-card {
+            background-color: rgb(234, 238, 5);
+            width: 300px;
+            height: 360px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+        .glenard-card img {
+            width: 90%;
+            height: 85%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .glenard-dscptn {
+            color: rgb(37, 23, 23);
+            font-family: sans-serif;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .main-gallery-grid > .yancy-card {
+            background-color: #6a7cb9;
+            border: 2px solid #0d0abd;
+            border-radius: 15px;
+            width: 300px;
+            height: 360px;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .yancy-card img {
+            width: 100%;
+            height: 280px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .yancy-dscptn {
+            color: #ffffff;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .main-gallery-grid > .miles-card {
+            background-color: rgb(172, 34, 34);
+            width: 300px;
+            height: 360px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+        .miles-card img {
+            width: 90%;
+            height: 80%;
+            object-fit: cover;
+        }
+        .miles-dscptn {
+            color: #ffffff;
+            margin-top: 8px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .main-gallery-grid > .teejay-container {
+            width: 300px;
+            height: 360px;
+            background: #3a3a3a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Georgia, serif;
+        }
+
+        .teejay-frame {
+            width: 245px;
+            height: 285px;
+            background: rgb(0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 14px;
+        }
+
+        .teejay-image-box {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .teejay-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .teejay-label {
+            margin-top: 8px;
+            font-size: 20px;
+            color: #949393;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-box">
+        <h1 class="page-title">ACAD - A7</h1>
+
+        <div class="main-gallery-grid">
+
+        <!-- 1. ABASOLO, YANCY SHAWN -->
+        <div class="yancy-card">
+            <img src="https://lh3.googleusercontent.com/d/1ilhKrc3swxjBwXtFa2ynhJvf7nUzJ0rB" alt="Yancy.jpg">
+            <div class="yancy-dscptn">Yancy</div>
+        </div>
+
+        <!-- 2. ACUÑA, JOHN ANDREI GAMBOA -->
+        <div class="added-student-card" style="--card-color: #665842; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/1-pmzsY4V2EBOEFuWbCAaYgDYyfLDzmyS" alt="andrei.jpg">
+            <div class="added-student-dscptn">andrei</div>
+        </div>
+
+        <!-- 3. ANTONIO, MILES IVAN MANLAPIG -->
+        <div class="miles-card">
+            <img src="https://lh3.googleusercontent.com/d/1_92eCnPCa8De4HKY4HMslzy9YSU5GydE" alt="Miles.jpg">
+            <div class="miles-dscptn">Miles Halimaw Magmahal</div>
+        </div>
+
+        <!-- 4. ARCILLA, ALLEN FRANCISCO -->
+        <div class="added-student-card" style="--card-color: #64748b; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/1C2Wqo7Cwvqt7wc7GZLwpIUmIZqjtqPjZ" alt="allen.jpg">
+            <div class="added-student-dscptn">Allen</div>
+        </div>
+
+        <!-- 5. ASUNCION, JANELLE MARIE ABRAZADO -->
+        <div class="janelle-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1h_-lTBYwBTP4D_V2mpOPB3Q_4XIhwwHA" alt="Janelle">
+            <div class="janelle-dscptn">Janelle</div>
+        </div>
+
+        <!-- 6. BAYAN, IRISH MAE ATIENZA -->
+        <div class="added-student-card" style="--card-color: #7c3aed; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/14DEKRwKAG8Y9Gx8qHnIhGUFlJvUzU8S4" alt="Irish.jpg">
+            <div class="added-student-dscptn">Irish</div>
+        </div>
+
+        <!-- 7. BLANCO, JHEN DAVE PUNZALAN -->
+        <div class="jhendave-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1G_Jaw1MO_anH4uZ-jb7JY0A_uM6l4I2z" alt="JhenDave">
+            <div class="jhendave-dscptn">
+                <span style="color: white;">Jhendave</span>
+            </div>
+        </div>
+
+        <!-- 8. CADILIG, PAUL MCKAIZZER CASTRO -->
+        <div class="added-student-card" style="--card-color: #AAA091; --text-color: #111111;">
+            <img src="https://lh3.googleusercontent.com/d/1y9KBo9Ei6qes0MUcZJCqd3HEmEeQkjjf" alt="paul.jpg">
+            <div class="added-student-dscptn">paul</div>
+        </div>
+
+        <!-- 9. CASILLAN, ENRIQUE JR. MENDIOLA -->
+        <div class="enrique-gallery">
+            <img src="https://lh3.googleusercontent.com/d/1juKHt9QlrGGvqQyNob7GEf3eBmAUT_4G" alt="enrique">
+            <p>itsenrq</p>
+        </div>
+
+        <!-- 10. CATAHAN, STEFANO DOMINGO -->
+        <div class="stefano-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1vAiTog1nSc5HtmWsM_AXls_Mw0EUzXZ-" alt="Stefano.jpg">
+            <div class="stefano-dscptn">Iteppp</div>
+        </div>
+
+        <!-- 11. CRISOSTOMO, SOPHIA RASMIN BORCENA -->
+        <div class="sophia-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1fh27COqB-Zwy5RmWly1Yyd1jnG0ak41f" alt="Sophia.jpg">
+            <div class="sophia-dscptn">Sophia Rasmin Crisostomo ★</div>
+        </div>
+
+        <!-- 12. CRUZ, GLENARD DE JESUS -->
+        <div class="glenard-card">
+            <img src="https://lh3.googleusercontent.com/d/1otaBbqZSLnwJvb7L1hzie5UHvljGFDi8" alt="glenard.jpg">
+            <div class="glenard-dscptn">glen pogi:&gt;</div>
+        </div>
+
+        <!-- 13. CRUZ, JADE STANLEY -->
+        <div class="jade-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1v4amFXGT192gJA0blvoUruYPcOO0YCFS" alt="Jade.jpg">
+            <div class="jade-dscptn">Jade Stanley M. Cruz</div>
+        </div>
+
+        <!-- 14. DELA CRUZ, JANINE-MARIELIE PEREZ -->
+        <div class="janine-polaroid-card">
+            <div class="janine-yellow-frame">
+                <img src="https://lh3.googleusercontent.com/d/17NXncd32rD74ahSGAI7xmUl_a38coh9D" alt="jm.jpg">
+            </div>
+            <div class="janine-student-name">Janine-Mariel P. Dela Cruz</div>
+        </div>
+
+        <!-- 15. DELA CRUZ, SEBASTIAN GUILE M. -->
+        <div class="added-student-card sebi-polaroid-card" style="--card-color: #3198AD; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/1feCjzLD-xNiZqJVMHrFPtW6iBZEKbxfN" alt="sebi.JPG">
+            <div class="added-student-dscptn">sebi</div>
+        </div>
+
+        <!-- 16. DELOS SANTOS, PATRICK JACE OCAMPO -->
+        <div class="patrick-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1n6rBXjjASzsaxp4kY3QbHPRt9De0i-KB" alt="Jace.jpg">
+            <div class="patrick-dscptn"><span style="color: white;">Patrick Jace O. Delos Santos</span></div> 
+        </div>
+
+        <!-- 17. FELIPE, JEANETTE ADRIANO -->
+        <div class="jeanette-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1mEh1AmYJ056H-iTSwv5nyrsqLOp8r8eX" alt="Jean.jpg" />
+            <div class="jeanette-dscptn">Jean</div>
+        </div>
+
+        <!-- 18. GALMAN, RICO JELO LASQUITE -->
+        <div class="added-student-card" style="--card-color: #334155; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/17Ip2gotIk99nTJ6Sx9lQlBpe5PAtEdtD" alt="Jelo.jpg">
+            <div class="added-student-dscptn">Rico Jelo Lasquite Galman</div>
+        </div>
+
+        <!-- 19. HERNANDEZ, JIM CEDRICK CORTEZ -->
+        <div class="jim-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1kyZZz4dXcQR_LI4LCQl4C6y309Ik2Eo_" alt="Jim.jpg">
+            <div class="jim-dscptn">Jim Pugi</div> 
+        </div>
+
+        <!-- 20. ITCHON, ANTONIO LORENZO ESPINOSA -->
+        <div class="antonio-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1Sn1QTsr8hpbA7ZAY5sGvbUbtBQWfbsxr" alt="Itachi">
+            <div class="antonio-dscptn">
+                <h2>Itachi</h2>
+                <p>The mythical kup41 of 12 - ACAD A 07.</p>
+            </div>
+        </div>
+
+        <!-- 21. LEONCIO, DIANE JOY PANGLINAN -->
+        <div class="diane-img-container">
+           <img src="https://lh3.googleusercontent.com/d/16q_VIXz11-WEFT0mq-17MBJqhN08ODoT" alt="diane.jpg">
+           <div class="diane-dscptn">diane</div>
+        </div>
+
+        <!-- 22. LUCAS, ALDRIN BAUTISTA -->
+        <div class="added-student-card" style="--card-color: #475569; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/1STZq1S4TsNQmeS9blEt_dFsTURxEjONd" alt="aldrin.jpg">
+            <div class="added-student-dscptn">Aldrin</div>
+        </div>
+
+        <!-- 23. MACLANG, JOSIAH SALAMAT -->
+        <div class="josiah-image-container">
+            <img src="https://lh3.googleusercontent.com/d/1q_ncxwDTA3257bBurgmGquMbHSWaDp-W" alt="Josiah">
+            <div class="josiah-dscptn">Aya</div>
+        </div>
+
+        <!-- 24. MAÑALAC, CATLEYA JAN MANALILI -->
+        <div class="catleya-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1R43ihOJRtwCS9JA6wcFiPxTWV3BtRU-7" alt="img">
+            <div class="catleya-dscptn"><span style="color: white;">Catleya</span></div> 
+        </div>
+
+        <!-- 25. MANLANGIT, SAMANTHA NICOLE V. -->
+        <div class="samantha-card">
+            <img src="https://lh3.googleusercontent.com/d/1Ijwlpxn5Ibl7Mf7pMdgqlAnIxgNzzq59" alt="Samantha.jpg">
+            <div class="samantha-dscptn">Samantha Nicole V. Manlangit</div>
+        </div>
+
+        <!-- 26. MANUEL, JOHN NOAH LAPIRA -->
+        <div class="noah-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1ZABOOw7kuJ6IwO4yOkP-vOgcZo2Iq3Ee" alt="noahpogi.jpg">
+            <div class="noah-dscptn"><span style="color: white;">noah pogi</span></div>
+        </div>
+
+        <!-- 27. MENDOZA JR., RONNELIO AUSTRIA -->
+        <div class="ronnelio-container">
+            <img src="https://lh3.googleusercontent.com/d/1ZMQvw1_xJyUZVxD1MXMVLME0bsCHjcqR" alt="JJ">
+            <div class="ronnelio-dscptn">JJ</div>
+        </div>
+
+        <!-- 28. MENDOZA, ELLAIZA MAE STA. ANA -->
+        <div class="added-student-card" style="--card-color: #8A7E7B; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/1te_qhYK13Jqvu_tXiJqiRhgnJmN5VK1H" alt="Ellaiza.jpg">
+            <div class="added-student-dscptn">Ellaiza</div>
+        </div>
+
+        <!-- 29. NAVARRO, KHRYSTAL DELA CRUZ -->
+        <div class="khrystal-card">
+            <img src="https://lh3.googleusercontent.com/d/1iBABYRTWZN_GSlF_IUl_xSeOe5BgheCm" alt="Khrystal.jpg">
+            <div class="khrystal-dscptn">TALA</div>
+        </div>
+
+        <!-- 30. PANGANIBAN, STEVEN KARL ANZURES -->
+        <div class="steven-img-container">
+           <img src="https://lh3.googleusercontent.com/d/1waZhhB63usEmxJ_NqKwFqOQVkM-TS5uk" alt="Steven.jpg">
+           <div class="steven-dscptn">Tiben</div>
+        </div>
+
+        <!-- 31. PELOBELLO, TRAVIS MAPOY -->
+        <div class="added-student-card" style="--card-color: #75736B; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/1fsz7XvxzceytxWySNRDBB9meEyVFGPmE" alt="Travis.jpg">
+            <div class="added-student-dscptn">Travis</div>
+        </div>
+
+        <!-- 32. PINO, JHILLYAHN AISLEY GANELO -->
+        <div class="jhillyan-container">
+            <div class="jhillyan-image-container">
+                <img src="https://lh3.googleusercontent.com/d/1YUZ0NmtlQTZpXa2Yw6sODsS8gFnrzXXj" alt="jhill.jpg">
+                <div class="jhillyan-dscptn">Jhillyahn Aisley G. Pino</div>
+            </div>
+        </div>
+
+        <!-- 33. POLINTAN, ZANDHER ZAPATA -->
+        <div class="added-student-card" style="--card-color: #4B362B; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/1xMtz3HbDanGlwuAAemKrF5A__dIGVFH8" alt="zandher.png">
+            <div class="added-student-dscptn">zandher</div>
+        </div>
+
+        <!-- 34. QUIAMBAO, EVAN JOSHUA LAZO -->
+        <div class="evan-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1WIGu2y9hwdmD04KPvCponkxm5OBNNgaE" alt="evannn.jpg">
+            <div class="evan-dscptn">
+                <span style="color: white;">Evan</span>
+            </div>
+        </div>
+
+        <!-- 35. RAMOS, ARQUEL CHRISTIAN MARTINEZ -->
+        <div class="arquel-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1Ihw-iW0ejypasyVvmnUIXtjh1VBjfVxg" alt="img">
+            <div class="arquel-dscptn"><span style="color: navy; font-weight: bold;">Arquel cute</span></div>
+        </div>
+
+        <!-- 36. RAMOS, DANIELLE RHIAN DE BORJA -->
+        <div class="added-student-card" style="--card-color: #665E55; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/1lkYM29ucFDJDn-8olxJNTAPLDwFzXu2W" alt="Rhian.jpeg">
+            <div class="added-student-dscptn">Rhian</div>
+        </div>
+
+        <!-- 37. RAMOS, RHIANGAEL AMURAO -->
+        <div class="added-student-card" style="--card-color: #8E9699; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/1rfbSPlFYaUJYHZMT3CHOlEVVIHY5SLhl" alt="gail.jpeg">
+            <div class="added-student-dscptn">gail</div>
+        </div>
+
+        <!-- 38. REYES, ADAM ERIKSON SALONGA -->
+        <div class="adam-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1rg4FwXIi7pXxRUx4Bovbss-LUjL1EQDH" alt="Adam">
+            <div class="adam-dscptn">
+                <span style="color: white;">Adamson University</span>
+            </div>
+        </div>
+
+        <!-- 39. REYES, ANGELA CLAVIO -->
+        <div class="angela-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1YW5tfBjBgVidbL8MZ0_M3LOKAB4-Yka6" alt="Angela">
+            <div class="angela-dscptn">Angela</div> 
+        </div>
+
+        <!-- 40. RIVERA, JEROMMEKE MCKENZIE DIONISIO -->
+        <div class="jerommeke-wrapper">
+            <div class="jerommeke-img-container">
+                <img src="https://lh3.googleusercontent.com/d/1eMOTPjJWN0M_SY8mPDHYP8u_QZJzka_l" alt="Jerommeke">
+                <div class="jerommeke-dscptn">makenzwi_</div>
+            </div>
+        </div>
+
+        <!-- 41. ROMERO, ALEXIS MILITANTE -->
+        <div class="alexis-gallery">
+            <img src="https://lh3.googleusercontent.com/d/1A2NGVMHAnJiJEAQN0E16_L5C_iZiqSHk" alt="Alexis.jpg">
+            <div class="alexis-dscptn">lexii</div>
+        </div>
+
+        <!-- 42. ROQUE, STEPHEN PAUL MARCUS G. -->
+        <div class="stephen-card">
+            <img src="https://lh3.googleusercontent.com/d/1uoH_orSZ9XqOlGfF7t2vhu2xfwcaHb_T" alt="Stephen.jpg">
+            <div class="stephen-dscptn">Stephen Pogi</div>
+        </div>
+
+        <!-- 43. RUBIANO, PRINCE NIÑO ALEXIS SANTOS -->
+        <div class="prince-container">
+            <img src="https://lh3.googleusercontent.com/d/1uFwF6G0oWjpA-XBZzfuoFm5XGZxm8DMp" alt="Prince">
+            <div class="prince-dscptn">Prince</div>
+        </div>
+
+        <!-- 44. SORIANO, AICA FHIRILL SANDIG -->
+        <div class="added-student-card" style="--card-color: #db2777; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/19_uUhD9r1RXaEzISN_Smsbhtf0SY0lAG" alt="aica.jpg">
+            <div class="added-student-dscptn">Aica</div>
+        </div>
+
+        <!-- 45. STO. DOMINGO IV, TITO DELA CRUZ -->
+        <div class="tito-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1Fr7eIDOIvG-Cfx7MYgGPJ-u1PFJA1ead" alt="img">
+            <div class="tito-dscptn">toto</div>
+        </div>
+
+        <!-- 46. TAPICERIA, VINCENT JOHN MANUMBAS -->
+        <div class="added-student-card" style="--card-color: #413838; --text-color: #ffffff;">
+            <img src="https://lh3.googleusercontent.com/d/1F0fjh77xjVH6KEefTe2CrD-B2gGt7r48" alt="cent (1).jpg">
+            <div class="added-student-dscptn">cent (1)</div>
+        </div>
+
+        <!-- 47. TAROL, TIMOTHY JOHN SATUR -->
+        <div class="teejay-container">
+            <div class="teejay-frame">
+                <div class="teejay-image-box">
+                    <img src="https://lh3.googleusercontent.com/d/146EDqQJIuauf6MfqeseI9ajuqrk7_9Ws" alt="TeeJay.jpg">
+                </div>
+                <div class="teejay-label">TeeJay</div>
+            </div>
+        </div>
+
+        <!-- 48. VERIAN, JHON ROYCE ESCUADRO -->
+        <div class="royce-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1UTZFr_xjFzaPvcDEbTTjn4YLgnV32TA-" alt="Royciee.jpg">
+            <div class="royce-dscptn">Royce Masikip</div>
+            <p class="royce-p">Activity Ko Toh!</p>
+        </div>
+
+        <!-- 49. VILLEGAS, AARON VLADIMIER CASTILLO -->
+        <div class="aaron-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1_ejVMXiqRIIzJzwbGiH3uy_KwKUMmRWA" alt="VLADIMIER">
+            <div class="aaron-dscptn"><span style="color: #08306b; font-weight: bold;">eyyyrown</span></div>
+        </div>
+
+        <!-- 50. VILLENA, KHENJIE QUINTO -->
+        <div class="khenjie-img-container">
+            <img src="https://lh3.googleusercontent.com/d/1tfrv-sWNL6v6IunOdx1veTdFxjCG_pTK" alt="Khenjie">
+            <div class="khenjie-dscptn">Khenjie</div>
+        </div>
+        </div>
+    </div>
+
+</body>
+</html>
